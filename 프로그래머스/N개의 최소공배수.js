@@ -1,6 +1,6 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12953?language=javascript
 
-let arr = [2, 6, 8, 14];
+let arr = [1, 2, 3];
 let commons = [];
 
 const checkDisjoint = (arr) => {
