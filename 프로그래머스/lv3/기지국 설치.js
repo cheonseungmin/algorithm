@@ -10,10 +10,7 @@ stations.push(N + W + 1);
 let answer = 0;
 let start = 1;
 stations.forEach(end => {
-    console.log(start)
     let length = (end - W) - start
-    console.log(length)
-    console.log(end)
     answer += Math.ceil(length / ((2 * W) + 1));
     start = end + W + 1;
 });
