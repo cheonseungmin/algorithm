@@ -7,8 +7,11 @@
 //    [0, 0, 1, 0]
 //];
 
-let key = [[0, 0, 0], [1, 0, 0], [0, 1, 1]];
+//let key = [[0, 0, 0], [1, 0, 0], [0, 1, 1]];
 let lock = [[1, 1, 1], [1, 1, 0], [1, 0, 1]];
+
+let key = [[0, 1], [1, 0]];
+//let lock = [[0, 1], [1, 0]];
 
 const rotate = key => {
     let flag = false;
@@ -51,16 +54,18 @@ let open = lock.reduce((acc, cur) => {
     return acc;
 }, 0);
 
-let n = lock.length;
+let n = (key.length < lock.length) ? key.length : lock.length;
 
 let rs = 0;
 let re = 1;
 let cs = 0;
 let ce = 1;
 for (let count = 0; count < 4;) {
+    console.log(rs, re, cs, ce)
     let flag = 0;
     for (let i = rs; i < re; i++) {
         for (let j = cs; j < ce; j++) {
+            console.log('ij ' + i + j)
             if (lock[n - 1 - i][n - 1 - j] === 0 && key[i][j] === 1) {
                 flag++;
             } else if ((lock[n - 1 - i][n - 1 - j] === 1 && key[i][j] === 1) ||
