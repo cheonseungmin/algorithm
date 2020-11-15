@@ -24,38 +24,19 @@ const f = (arr) => {
 
     let half = arr.length / 2;
     let q = new Array(4);
-    for (let k = 0; k < 4; k++) q[k] = new Array(half);
-
-
-    for (let i = 0; i < half; i++) {
-        q[0][i] = new Array(half);
-        for (let j = 0; j < half; j++) {
-            q[0][i][j] = arr[i][j];
+    for (let k = 0; k < 4; k++) {
+        q[k] = new Array(half);
+        for (let i = 0; i < half; i++) {
+            q[k][i] = new Array(half);
+            for (let j = 0; j < half; j++) {
+                if (k === 0) q[k][i][j] = arr[i][j];
+                else if (k === 1) q[k][i][j] = arr[i][half + j];
+                else if (k === 2) q[k][i][j] = arr[half + i][j];
+                else q[k][i][j] = arr[half + i][half + j];
+            }
         }
+        f(q[k]);
     }
-
-    for (let i = 0; i < half; i++) {
-        q[1][i] = new Array(half);
-        for (let j = 0; j < half; j++) {
-            q[1][i][j] = arr[i][half + j];
-        }
-    }
-
-    for (let i = 0; i < half; i++) {
-        q[2][i] = new Array(half);
-        for (let j = 0; j < half; j++) {
-            q[2][i][j] = arr[half + i][j];
-        }
-    }
-
-    for (let i = 0; i < half; i++) {
-        q[3][i] = new Array(half);
-        for (let j = 0; j < half; j++) {
-            q[3][i][j] = arr[half + i][half + j];
-        }
-    }
-
-    for (let k = 0; k < 4; k++) f(q[k]);
 }
 
 f(arr);
